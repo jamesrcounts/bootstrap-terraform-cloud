@@ -1,7 +1,8 @@
 resource "random_pet" "instance" {}
 
 module "organization" {
-  source = "github.com/jamesrcounts/terraform-tfe-organization.git"
+  source  = "app.terraform.io/welcome-cow/organization/tfe"
+  version = "0.0.3"
 
   email      = "nobody@example.com"
   github_pat = var.github_pat
@@ -9,7 +10,8 @@ module "organization" {
 }
 
 module "registry" {
-  source = "github.com/jamesrcounts/terraform-tfe-registry.git"
+  source  = "app.terraform.io/welcome-cow/registry/tfe"
+  version = "0.0.1"
 
   oauth_token_id = module.organization.github_token_id
 
@@ -22,7 +24,8 @@ module "registry" {
 }
 
 module "workspace" {
-  source = "github.com/jamesrcounts/terraform-tfe-workspace.git"
+  source  = "app.terraform.io/welcome-cow/workspace/tfe"
+  version = "0.0.4"
 
   name              = "governance-root"
   organization_name = module.organization.name
