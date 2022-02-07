@@ -1,6 +1,14 @@
 terraform {
   required_version = ">= 1"
 
+  cloud {
+    organization = "welcome-cow"
+
+    workspaces {
+      name = "governance-root"
+    }
+  }
+
   required_providers {
     random = {
       source  = "hashicorp/random"
